@@ -75,6 +75,7 @@ void compare_cards(City cards[]) {
     printf("Número de pontos turísticos: 4\n");
     printf("Densidade populacional(hab/km²): 5\n");
     printf("PIB per capita: 6\n");
+    printf("SUPER PODER: 7\n");
     printf("> ");
     scanf("%d", &property_number);
 
@@ -110,11 +111,17 @@ void compare_cards(City cards[]) {
         case 6:
             win_card = first_card.GDP_per_capita > second_card.GDP_per_capita ? first_card : second_card;
             break;
+        case 7:
+            float first = first_card.population + first_card.area + first_card.GDP + first_card.touristic_points + first_card.population_density + first_card.GDP_per_capita;
+            float second = second_card.population + second_card.area + second_card.GDP + second_card.touristic_points + second_card.population_density + second_card.GDP_per_capita;
+
+            win_card = first > second ? first_card : second_card;
+            break;
         default:
             break;
     }
 
-    printf("Carta vencedora: %s\n", win_card.code);
+    printf("*****Carta vencedora: %s*****\n", win_card.code);
 }
 
 int main() {
